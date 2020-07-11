@@ -6,4 +6,4 @@ relative_links:
 include:
   - CONTRIBUTING.md
   - README.md
-theme: jekyll-theme-modernist
+theme: jekyll-theme-primer
