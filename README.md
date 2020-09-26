@@ -3,7 +3,7 @@
 
 ## Klaro information and purpose
 
-Klaro is cypher cash...ED1T
+Klaro is cypher cash...
 
 
 Klaro is inspired by cutting edge technology and it's purpose, in a phase where the world seems in "danger" we decided to bring you Klarity, Klaro is electronic money, Klaro is a tool which allows the creation of what "mankind" call money in an electronic way. Klaro shouldn't be seen as crypto watchers, investors, traders see cryptocurrencies, rather than source of income/fun/mining or learning, cryptocurrencies should be seen as precious code left by several developers around the world which has real value ( you can also see it as artifacts). Today we introduce you Klaro, an electronic form of money with nothing more than our honest vision of the future as "mankid" evolves and each individual tries to map it's future ahead. 
