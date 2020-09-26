@@ -1,4 +1,4 @@
-![](image.https://github.com/klaroooo/klaro.ooo/blob/master/klaro1.jpg)
+![Drag Racing]https://github.com/klaroooo/klaro.ooo/blob/master/klaro1.jpg)
 
 
 ## Klaro information and purpose
