@@ -1,4 +1,4 @@
-![alt text](https://github.com/klaroooo/klaro.ooo/blob/master/klaro1.jpg)
+![](image.https://github.com/klaroooo/klaro.ooo/blob/master/klaro1.jpg)
 
 
 ## Klaro information and purpose
