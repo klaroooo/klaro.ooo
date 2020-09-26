@@ -1,4 +1,5 @@
-# Klaro
+![alt text](https://github.com/klaroooo/klaro.ooo/blob/master/klaro1.jpg)
+
 
 ## Klaro information and purpose
 
@@ -25,3 +26,5 @@ Klaro has a total supply of 18400000 coins for the time being, value defined by 
 
 
 Klaro is a coin with sun in mind. 
+
+
