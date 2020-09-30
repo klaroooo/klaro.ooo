@@ -52,7 +52,7 @@ img
     padding: 0
 
     &[data-anchor="home"]
-        background: linear-gradient(192.93deg, $primary 16.34%, $black 69.58%)
+        background: linear-gradient(192.93deg, $success 16.34%, $black 69.58%)
         &::before
             content: ''
             position: absolute
@@ -109,5 +109,21 @@ img
         color: $white
         background: $black
         mix-blend-mode: normal
-        border: 1px solid $primary
-        box-shadow: 0 20px 100px 40px rgba($primary, 0.2)
+        border: 1px solid $success
+        box-shadow: 0 20px 100px 40px rgba($success, 0.2)
+.fp-slidesNav
+    ul
+        display: flex
+        align-content: center
+        justify-content: center
+        padding:
+            bottom: 4vh
+        li
+            align-self: center
+            margin: $w
+            a
+                span
+                    background: $white
+                &.active
+                    span
+                        background: $primary
