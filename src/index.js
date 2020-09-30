@@ -34,7 +34,7 @@ new Engine('#fullpage', {
             container: planets,
             loop: true,
             autoplay: true,
-            path: 'https://assets8.lottiefiles.com/private_files/lf30_aaO2Wk.json',
+            path: 'https://assets4.lottiefiles.com/packages/lf20_metnt4za.json',
             rendererSettings: {
                 progressiveLoad: true,
                 preserveAspectRatio: 'xMidYMid slice',
