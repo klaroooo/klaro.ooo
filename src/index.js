@@ -8,7 +8,7 @@ const content = {
     },
     'about': {
         'title': 'WHAT IS KLARO?',
-        'subtitle': 'A CryptoNote based cryptocurrency with the Sun in mind'
+        'subtitle': 'Read about our philosophy and vision of future'
     },
     'download': {
         'title': 'QUICK START',
@@ -22,15 +22,18 @@ const content = {
 
 import $ from 'jquery';
 import Lottie from 'lottie-web';
-import Engine from '../node_modules/fullpage.js/dist/fullpage';
+import Engine from 'fullpage.js/dist/fullpage';
 new Engine('#fullpage', {
     verticalCentered: false,
+    slidesNavigation: true,
+    fadingEffect: 'slides',
     anchors: Object.keys(content),
     scrollHorizontally: true,
     fixedElements: '#bar',
+    recordHistory: false,
     afterRender: function () {
-        var planets = document.getElementById("lottie-planets");
-        var svgPlanets = Lottie.loadAnimation({
+        const planets = document.getElementById("lottie-planets");
+        let svgPlanets = Lottie.loadAnimation({
             container: planets,
             loop: true,
             autoplay: true,
