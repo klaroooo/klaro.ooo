@@ -3,32 +3,45 @@
 @import "https://fonts.googleapis.com/css2?family=Slackey&display=swap"
 @import "https://fonts.googleapis.com/css2?family=Montserrat&family=Orbitron:wght@400;900&display=swap"
 @import "../node_modules/fullpage.js/dist/fullpage.min.css"
-@import "style.css"
+//@import "style.css"
 
-$fuchsia: #ff00ff
-$aqua: #12f8f8
-$neon-green: #27e719
-$dark-magenta: #96289e
-$xiketic: #05051f
-$black: #000000
-$white: #ffffff
+$violet-web: rgba(255, 132, 232, 1)
+$xiketic: rgba(14, 7, 12, 1)
+$cyber-yellow: rgba(255, 212, 0, 1)
+$neon-green: rgba(39, 231, 25, 1)
+$rich-black-fogra-29: rgba(16, 25, 38, 1)
+$silver-sand: rgba(181, 184, 186, 1)
+$cultured: rgba(244, 246, 245, 1)
+$mint-cream: rgba(248, 255, 248, 1)
 
 // Update Bulma's global variables
 $family-sans-serif: "Montserrat", sans-serif
-$primary: $neon-green
-$success: $dark-magenta
-$dark: $xiketic
+$primary: $violet-web
+$info: $cultured
+$success: $neon-green
+$dark: $rich-black-fogra-29
+$grey: $silver-sand
+$danger: $cyber-yellow
+$black: $xiketic
+$white: $mint-cream
 
 $h: 9vh
 $w: 3vw
+@function shadow($color)
+    @return rgba($color, 0.7)
 
+@function box-shadow($color)
+    @return 0 -12px 40px 2px $color
 
+@function section-gradient($from, $to)
+    @return linear-gradient(180deg, $from 2%, $to 92%)
 
 // Update Bulma's classes
 .hero
     margin: 0
     font:
         family: $family-sans-serif
+
 
 .hero-head
     height: $h
@@ -40,8 +53,15 @@ $w: 3vw
         family: "Orbitron", cursive
     line-height: 100%
     position: relative
-    color: $primary
-    stroke: $white
+    z-index: 2
+    color: $success
+    text-shadow: 0 4px 20px $success
+.subtitle
+    &.box
+        line-height: 10px
+        padding: 4px
+        background: shadow($xiketic)
+        box-shadow: box-shadow(shadow($xiketic))
 
 img
     height: 100%
@@ -50,38 +70,40 @@ img
 .section
     position: relative
     padding: 0
+    transition: all 200s ease-out
 
     &[data-anchor="home"]
-        background: linear-gradient(192.93deg, $success 16.34%, $black 69.58%)
+        background: linear-gradient(192.93deg, rgba($info,0.1) 16.34%, $black 69.58%)
         &::before
             content: ''
             position: absolute
             top: 0
             left: 0
-            background-image: url('../www/img/nebula_wallpaper.jpg')
+            background-image: url('img/nebula_wallpaper.jpg')
             background-size: cover
             height: 100vh
             width: 100vw
-            opacity: .67
-            z-index: 2
+            z-index: -1
 
     &[data-anchor="about"]
-        background: linear-gradient(180deg, $black 0%, $dark 94%)
+        background: section-gradient($black, $dark)
 
     &[data-anchor="download"]
-        background: linear-gradient(180deg, $dark 6%, $success 96%)
+        background: section-gradient($dark, $primary)
         .hero
             background:
-                image: url(../www/img/bg/downloads.svg)
+                image: url(www/img/bg/downloads.svg)
                 repeat: no-repeat
                 size: cover
                 position: center bottom
+            .box
+                box-shadow: box-shadow($primary)
 
     &[data-anchor="contact"]
-        background: linear-gradient(180deg, $success 4%, $primary 100%)
+        background: section-gradient($primary, $black)
         .hero
             background:
-                image: url(../www/img/bg/contact.svg)
+                image: url(img/bg/contact.svg)
                 repeat: no-repeat
                 size: cover
                 position: center top
@@ -95,7 +117,7 @@ img
 
 // Update Fullpage.css
 .fp-controlArrow
-    top: 50vh + $h
+    top: 54vh + $h
 .fp-slide
     height: 100vh - $h
     display: flex
@@ -105,12 +127,12 @@ img
     justify-content: center
     .box
         align-self: center
-        max-width: 80%
-        color: $white
-        background: $black
-        mix-blend-mode: normal
-        border: 1px solid $success
-        box-shadow: 0 20px 100px 40px rgba($success, 0.2)
+        max-width: 90%
+        padding: $w
+        color: $info
+        background: section-gradient($dark, $black)
+        box-shadow: box-shadow(rgba($success, 0.2))
+
 .fp-slidesNav
     ul
         display: flex
@@ -123,7 +145,7 @@ img
             margin: $w
             a
                 span
-                    background: $white
+                    background: $info
                 &.active
                     span
-                        background: $primary
+                        background: $success
