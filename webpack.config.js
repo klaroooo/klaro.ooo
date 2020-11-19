@@ -1,5 +1,5 @@
 const
-    DevRoot = 'src', WebRoot = 'www', AssetsRoot = 'inc',
+    DevRoot = 'src', WebRoot = 'www',
     webpack = require('webpack'), path = require('path'),
 
     App = require('./package.json'),
@@ -7,15 +7,14 @@ const
 
     HtmlWebpackPlugin = require('html-webpack-plugin'),
     CssMinimizerPlugin = require('css-minimizer-webpack-plugin'),
-    svgToMiniDataURI = require('mini-svg-data-uri'),
     TerserPlugin = require('terser-webpack-plugin'),
     MiniCssExtractPlugin = require('mini-css-extract-plugin')
 ;
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
-    mode: 'development',
-    // mode: 'production',
+    // mode: 'development',
+    mode: 'production',
 
     context: path.resolve(__dirname, DevRoot),
     entry: {
@@ -25,12 +24,12 @@ module.exports = {
     },
 
     output: {
-        filename: path.join(AssetsRoot, `index.js`),
+        filename: 'script.js',
         path: path.resolve(__dirname, WebRoot),
         publicPath: '',
     },
     plugins: [
-        // new CleanWebpackPlugin(),
+        new CleanWebpackPlugin(),
         new MiniCssExtractPlugin({
             filename: 'style.css'
         }),
@@ -40,7 +39,6 @@ module.exports = {
             filename: 'index.html',
             inject: true
         }),
-        // new webpack.SourceMapDevToolPlugin(),
         new webpack.ProgressPlugin({
             percentBy: 'entries'
         })
@@ -62,21 +60,11 @@ module.exports = {
                     filename: '[file]'
                 }
             },
-            // {
-            //     test: /\.svg$/i,
-            //     type: "asset/inline",
-            //     generator: {
-            //         dataUrl: content => {
-            //             content = content.toString();
-            //             return svgToMiniDataURI(content);
-            //         }
-            //     }
-            // },
             {
                 test: /\.(ttf|eot|woff(2)?)$/,
                 type: "asset/resource",
                 generator: {
-                    filename: path.join(AssetsRoot, 'font/[name][ext]')
+                    filename: 'fonts/[name][ext]'
                 }
             },
         ]
@@ -86,11 +74,11 @@ module.exports = {
         poll: 1000
     },
     optimization: {
-        // minimize: true,
-        // minimizer: [
-        //     `...`,
-        //     new TerserPlugin(),
-        //     new CssMinimizerPlugin()
-        // ]
+        minimize: true,
+        minimizer: [
+            `...`,
+            new TerserPlugin(),
+            new CssMinimizerPlugin()
+        ]
     }
 }

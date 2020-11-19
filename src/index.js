@@ -21,6 +21,7 @@ require('./style.sass');
 
 import $ from 'jquery';
 import Lottie from 'lottie-web';
+import animationPlanets from './lottie/planets.json';
 import Engine from 'fullpage.js/dist/fullpage';
 new Engine('#fullpage', {
     verticalCentered: false,
@@ -36,7 +37,7 @@ new Engine('#fullpage', {
             container: planets,
             loop: true,
             autoplay: true,
-            path: 'https://assets4.lottiefiles.com/packages/lf20_metnt4za.json',
+            animationData: animationPlanets,
             rendererSettings: {
                 progressiveLoad: true,
                 preserveAspectRatio: 'xMidYMid slice',
@@ -51,11 +52,7 @@ new Engine('#fullpage', {
     },
     onLeave: function (origin, destination, direction) {
         let data = content[destination.anchor];
-        // $(destination.item).find('.hero-head').css({
-        //     height: '100px'
-        // });
         $('#titles .title').text(data.title);
         $('#titles .subtitle').text(data.subtitle);
-        console.log(destination.item);
     }
 });
