@@ -1,6 +1,6 @@
 {
   "name": "cipherpunk-web",
-  "version": "1.0.1",
+  "version": "1.5.0",
   "description": "Klaro website",
   "scripts": {
     "b": "npx webpack --no-cache",
