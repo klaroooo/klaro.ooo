@@ -1,4 +1,4 @@
-![](https://github.com/croqo/klaro.ooo/blob/master/K-Planets.gif)
+![](src/img/gif/K-Planets.gif)
 
 
 ## Klaro information and purpose
