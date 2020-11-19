@@ -1,9 +1,8 @@
-@charset "utf-8"
-
 @import "https://fonts.googleapis.com/css2?family=Slackey&display=swap"
 @import "https://fonts.googleapis.com/css2?family=Montserrat&family=Orbitron:wght@400;900&display=swap"
-@import "../node_modules/fullpage.js/dist/fullpage.min.css"
-//@import "style.css"
+@import "~fullpage.js/dist/fullpage.css"
+@import "~bulma/bulma"
+@import "~@fortawesome/fontawesome-free/css/all.css"
 
 $violet-web: rgba(255, 132, 232, 1)
 $xiketic: rgba(14, 7, 12, 1)
@@ -27,6 +26,7 @@ $white: $mint-cream
 
 $h: 9vh
 $w: 3vw
+
 @function shadow($color)
     @return rgba($color, 0.7)
 
@@ -35,6 +35,9 @@ $w: 3vw
 
 @function section-gradient($from, $to)
     @return linear-gradient(180deg, $from 2%, $to 92%)
+
+@function transition($time)
+    @return all $time ease-out
 
 // Update Bulma's classes
 .hero
@@ -47,6 +50,10 @@ $w: 3vw
     height: $h
     padding: $w
 
+.logo
+    &::before
+        content: ''
+        background-image: url('img/logo.svg')
 
 .title
     font:
@@ -56,12 +63,22 @@ $w: 3vw
     z-index: 2
     color: $success
     text-shadow: 0 4px 20px $success
+    &.is-success
+        color: $success
+        text-shadow: 0 4px 20px $success
+    &.is-primary
+        color: $primary
+        text-shadow: 0 4px 20px $primary
+    &.is-info
+        color: $info
+        text-shadow: 0 4px 20px $info
 .subtitle
+    color: $grey
     &.box
         line-height: 10px
         padding: 4px
         background: shadow($xiketic)
-        box-shadow: box-shadow(shadow($xiketic))
+        box-shadow: box-shadow($dark)
 
 img
     height: 100%
@@ -79,7 +96,7 @@ img
             position: absolute
             top: 0
             left: 0
-            background-image: url('img/nebula_wallpaper.jpg')
+            background-image: url('img/bg/nebula_wallpaper.jpg')
             background-size: cover
             height: 100vh
             width: 100vw
@@ -92,21 +109,36 @@ img
         background: section-gradient($dark, $primary)
         .hero
             background:
-                image: url(www/img/bg/downloads.svg)
+                image: url('./img/bg/downloads.svg')
                 repeat: no-repeat
                 size: cover
                 position: center bottom
             .box
-                box-shadow: box-shadow($primary)
+                background: $dark
+                box-shadow: box-shadow($dark)
+                a
+                    width: 100%
+                    color: $white
+                    text-align: center
+                    &.button
+                        background: section-gradient($white, $grey)
+                        color: $black
 
     &[data-anchor="contact"]
         background: section-gradient($primary, $black)
         .hero
             background:
-                image: url(img/bg/contact.svg)
+                image: url('img/bg/contact.svg')
                 repeat: no-repeat
                 size: cover
                 position: center top
+        a
+            color: $white
+            background: none
+            transition: transition(200ms)
+            &:hover
+                color: $success
+                transform: scale(1.1)
 
 #bar
     position: absolute

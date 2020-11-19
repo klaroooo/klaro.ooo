@@ -1,76 +1,82 @@
 const
-    path = require('path'),
-    date = new Date(),
-    webpack = require('webpack'),
+    DevRoot = 'src', WebRoot = 'www', AssetsRoot = 'inc',
+    webpack = require('webpack'), path = require('path'),
+
+    App = require('./package.json'),
+
+
     HtmlWebpackPlugin = require('html-webpack-plugin'),
     CssMinimizerPlugin = require('css-minimizer-webpack-plugin'),
     svgToMiniDataURI = require('mini-svg-data-uri'),
-    src = path.resolve(__dirname, 'src'),
-    pub = 'www', assets = 'res'
-    ASSET_PATH = process.env.ASSET_PATH || '/',
     TerserPlugin = require('terser-webpack-plugin'),
-    MiniCssExtractPlugin = require('mini-css-extract-plugin'),
-    { CleanWebpackPlugin } = require('clean-webpack-plugin')
+    MiniCssExtractPlugin = require('mini-css-extract-plugin')
 ;
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
-    mode: "development",
+    mode: 'development',
+    // mode: 'production',
+
+    context: path.resolve(__dirname, DevRoot),
+    entry: {
+        build : [
+            './index.js',
+        ]
+    },
+
+    output: {
+        filename: path.join(AssetsRoot, `index.js`),
+        path: path.resolve(__dirname, WebRoot),
+        publicPath: '',
+    },
     plugins: [
-        new CleanWebpackPlugin(),
-        new HtmlWebpackPlugin(),
+        // new CleanWebpackPlugin(),
         new MiniCssExtractPlugin({
-            filename: path.join(assets, '[name].css')
+            filename: 'style.css'
         }),
-        new webpack.SourceMapDevToolPlugin(),
+        new HtmlWebpackPlugin({
+            title: `${App.name} ( v${App.version} )`,
+            template: 'index.html',
+            filename: 'index.html',
+            inject: true
+        }),
+        // new webpack.SourceMapDevToolPlugin(),
         new webpack.ProgressPlugin({
             percentBy: 'entries'
         })
     ],
-    entry: {
-        build : [
-            path.resolve(__dirname, path.join(src, 'index.js')),
-            path.resolve(__dirname, path.join(src, 'index.html')),
-            path.resolve(__dirname, path.join(src, 'style.sass'))
-        ]
-    },
-    output: {
-        filename: path.join(assets, 'app.js'),
-        path: path.resolve(__dirname, pub),
-        publicPath: ASSET_PATH,
-        assetModuleFilename: path.join(assets, '[ext]/[name][ext]')
-    },
     module: {
         rules: [
             {
                 test: /\.(sa|sc|c)ss$/,
-                use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    { loader: 'css-loader', options: { sourceMap: true } },
+                    { loader: 'sass-loader', options: { sourceMap: true } },
+                ]
             },
             {
-                test: /\.html$/i,
-                type: 'asset/source',
-                generator: {
-                    filename: 'index.html'
-                }
-            },
-            {
-                test: /\.(png|jpg|jp?g|gif)$/i,
-                type: "asset/resource"
-            },
-            {
-                test: /\.svg$/i,
-                type: "asset/inline",
-                generator: {
-                    dataUrl: content => {
-                        content = content.toString();
-                        return svgToMiniDataURI(content);
-                    }
-                }
-            },
-            {
-                test: /\.(ttf|eot|woff|woff2)$/,
+                test: /\.(png|jpg|jp?g|gif|svg)$/i,
                 type: "asset/resource",
                 generator: {
-                    filename: path.join(assets, 'font/[hash][ext]')
+                    filename: '[file]'
+                }
+            },
+            // {
+            //     test: /\.svg$/i,
+            //     type: "asset/inline",
+            //     generator: {
+            //         dataUrl: content => {
+            //             content = content.toString();
+            //             return svgToMiniDataURI(content);
+            //         }
+            //     }
+            // },
+            {
+                test: /\.(ttf|eot|woff(2)?)$/,
+                type: "asset/resource",
+                generator: {
+                    filename: path.join(AssetsRoot, 'font/[name][ext]')
                 }
             },
         ]

@@ -1,7 +1,6 @@
-import 'bulma';
-import './style.sass';
+require('./style.sass');
 
-const content = {
+ const content = {
     'home': {
         'title': 'PRIVATE MONEY',
         'subtitle': 'A modern way to pay worldwide with the lowest fees'
