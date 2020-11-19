@@ -1,37 +1,45 @@
 {
-  "name": "klaro-web",
-  "version": "1.0.0",
+  "name": "cipherpunk-web",
+  "version": "1.5.0",
   "description": "Klaro website",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack",
-    "watch": "webpack --watch"
+    "b": "npx webpack --no-cache",
+    "w": "npx webpack --watch"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/croqo/klaro-website.git"
   },
-  "author": "croqo@outlook.com",
+  "author": "hello@croqo.xyz",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/croqo/klaro-website/issues"
   },
   "homepage": "https://github.com/croqo/klaro-website#readme",
   "dependencies": {
-    "bulma": "^0.9.0",
+    "@fortawesome/fontawesome-free": "^5.15.1",
+    "bulma": "^0.9.1",
     "fullpage.js": "^3.0.9",
     "jquery": "^3.5.1",
-    "lottie-web": "^5.7.3"
+    "lottie-web": "^5.7.4"
   },
   "devDependencies": {
-    "css-loader": "^4.3.0",
-    "file-loader": "^6.1.0",
-    "mini-css-extract-plugin": "^0.11.2",
-    "sass": "^1.26.11",
-    "sass-loader": "^10.0.2",
-    "style-loader": "^1.2.1",
-    "url-loader": "^4.1.0",
-    "webpack": "^4.44.2",
-    "webpack-cli": "^3.3.12"
+    "clean-webpack-plugin": "^3.0.0",
+    "css-loader": "^5.0.1",
+    "css-minimizer-webpack-plugin": "^1.1.5",
+    "file-loader": "^6.2.0",
+    "html-loader": "^1.3.2",
+    "html-webpack-plugin": "^5.0.0-alpha.14",
+    "mini-css-extract-plugin": "^1.3.1",
+    "mini-svg-data-uri": "^1.2.3",
+    "postcss": "^8.1.7",
+    "postcss-loader": "^4.0.4",
+    "sass": "^1.29.0",
+    "sass-loader": "^10.1.0",
+    "style-loader": "^2.0.0",
+    "terser-webpack-plugin": "^5.0.3",
+    "url-loader": "^4.1.1",
+    "webpack": "^5.5.1",
+    "webpack-cli": "^4.2.0"
   }
 }
