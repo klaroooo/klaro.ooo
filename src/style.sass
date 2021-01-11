@@ -1,0 +1,182 @@
+@import "https://fonts.googleapis.com/css2?family=Montserrat&family=Orbitron:wght@400;900&display=swap"
+@import "~fullpage.js/dist/fullpage.css"
+@import "~bulma/bulma"
+@import "~@fortawesome/fontawesome-free/css/all.css"
+
+$violet-web: rgba(255, 132, 232, 1)
+$xiketic: rgba(14, 7, 12, 1)
+$cyber-yellow: rgba(255, 212, 0, 1)
+$neon-green: rgba(39, 231, 25, 1)
+$rich-black-fogra-29: rgba(16, 25, 38, 1)
+$silver-sand: rgba(181, 184, 186, 1)
+$cultured: rgba(244, 246, 245, 1)
+$mint-cream: rgba(248, 255, 248, 1)
+
+// Update Bulma's global variables
+$family-sans-serif: "Montserrat", sans-serif
+$primary: $violet-web
+$info: $cultured
+$success: $neon-green
+$dark: $rich-black-fogra-29
+$grey: $silver-sand
+$danger: $cyber-yellow
+$black: $xiketic
+$white: $mint-cream
+
+$h: 9vh
+$w: 3vw
+
+@function shadow($color)
+    @return rgba($color, 0.7)
+
+@function box-shadow($color)
+    @return 0 -12px 40px 2px $color
+
+@function section-gradient($from, $to)
+    @return linear-gradient(180deg, $from 2%, $to 92%)
+
+@function transition($time)
+    @return all $time ease-out
+
+// Update Bulma's classes
+.hero
+    margin: 0
+    font:
+        family: $family-sans-serif
+
+
+.hero-head
+    height: $h
+    padding: $w
+
+.logo
+    &::before
+        content: ''
+        background-image: url('img/logo.svg')
+
+.title
+    font:
+        family: "Orbitron", cursive
+    line-height: 100%
+    position: relative
+    z-index: 2
+    color: $success
+    text-shadow: 0 4px 20px $success
+    &.is-success
+        color: $success
+        text-shadow: 0 4px 20px $success
+    &.is-primary
+        color: $primary
+        text-shadow: 0 4px 20px $primary
+    &.is-info
+        color: $info
+        text-shadow: 0 4px 20px $info
+.subtitle
+    color: $grey
+    &.box
+        line-height: 10px
+        padding: 4px
+        background: shadow($xiketic)
+        box-shadow: box-shadow($dark)
+
+img
+    height: 100%
+    width: auto
+
+.section
+    position: relative
+    padding: 0
+    transition: all 200s ease-out
+
+    &[data-anchor="home"]
+        background: linear-gradient(192.93deg, rgba($info,0.1) 16.34%, $black 69.58%)
+        &::before
+            content: ''
+            position: absolute
+            top: 0
+            left: 0
+            background-image: url('img/bg/nebula_wallpaper.jpg')
+            background-size: cover
+            height: 100vh
+            width: 100vw
+            z-index: -1
+
+    &[data-anchor="about"]
+        background: section-gradient($black, $dark)
+
+    &[data-anchor="download"]
+        background: section-gradient($dark, $primary)
+        .hero
+            background:
+                image: url('./img/bg/downloads.svg')
+                repeat: no-repeat
+                size: cover
+                position: center bottom
+            .box
+                background: $dark
+                box-shadow: box-shadow($dark)
+                a
+                    width: 100%
+                    color: $white
+                    text-align: center
+                    &.button
+                        background: section-gradient($white, $grey)
+                        color: $black
+
+    &[data-anchor="contact"]
+        background: section-gradient($primary, $black)
+        .hero
+            background:
+                image: url('img/bg/contact.svg')
+                repeat: no-repeat
+                size: cover
+                position: center top
+        a
+            color: $white
+            background: none
+            transition: transition(200ms)
+            &:hover
+                color: $success
+                transform: scale(1.1)
+
+#bar
+    position: absolute
+    width: 100vw
+    height: $h
+    left: 0
+    top: 0
+
+// Update Fullpage.css
+.fp-controlArrow
+    top: 54vh + $h
+.fp-slide
+    height: 100vh - $h
+    display: flex
+    flex:
+        direction: column
+    align-content: center
+    justify-content: center
+    .box
+        align-self: center
+        max-width: 90%
+        padding: $w
+        color: $info
+        background: section-gradient($dark, $black)
+        box-shadow: box-shadow(rgba($success, 0.2))
+
+.fp-slidesNav
+    ul
+        display: flex
+        align-content: center
+        justify-content: center
+        padding:
+            bottom: 4vh
+        li
+            align-self: center
+            margin: $w
+            a
+                span
+                    background: $info
+                &.active
+                    span
+                        background: $success
